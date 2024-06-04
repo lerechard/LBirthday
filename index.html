@@ -51,6 +51,19 @@
             margin-top: 10px;
         }
 
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background-color: #ff69b4;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+
         .confetti {
             position: fixed;
             top: -20px; /* Start slightly above the top of the screen */
@@ -68,12 +81,34 @@
                 transform: translateY(100vh) rotate(360deg);
             }
         }
+
+        .video-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        .video-container iframe {
+            width: 560px;
+            height: 315px;
+        }
     </style>
 </head>
 <body>
     <h1>HAPPY BIRTHDAY LINDSAY</h1>
     <h2>from charlie</h2>
+    <button onclick="showVideo()">Click Here</button>
+    <div class="video-container" id="videoContainer">
+        <iframe src="https://www.youtube.com/embed/nRA8-ygAPmY&autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
     <script>
+        function showVideo() {
+            document.getElementById('videoContainer').style.display = 'block';
+        }
+
         const confettiCount = 100;
         const colors = ['#ffcccb', '#ffb6c1', '#ff69b4', '#ff1493', '#db7093', '#c71585'];
         const confettiContainer = document.createDocumentFragment();
