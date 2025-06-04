@@ -4,127 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday Lindsay</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            background: linear-gradient(120deg, #ff9a9e, #fecfef, #ff9a9e, #fecfef);
-            background-size: 300% 300%;
-            animation: gradient 15s ease infinite;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            color: #ff69b4;
-            position: relative;
-            flex-direction: column;
-        }
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        h1 {
-            font-size: 3rem;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            margin: 0;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            margin: 0;
-            margin-top: 10px;
-        }
-
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 1rem;
-            color: white;
-            background-color: #ff69b4;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            position: relative;
-            z-index: 1;
-        }
-
-        .confetti {
-            position: fixed;
-            top: -20px; /* Start slightly above the top of the screen */
-            width: 20px;
-            height: 20px;
-            background-color: pink; /* Default color, will be overwritten by JS */
-            animation: fall 5s linear infinite;
-        }
-
-        @keyframes fall {
-            0% {
-                transform: translateY(0) rotate(0deg);
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-            }
-        }
-
-        .video-container {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-        }
-
-        .video-container iframe {
-            width: 560px;
-            height: 315px;
-        }
-    </style>
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+  </style>
 </head>
 <body>
-    <h1>HAPPY BIRTHDAY LINDSAY</h1>
-    <h2>from charlie</h2>
-    <button onclick="showVideo()">Turn Up Volume Then Tap</button>
-    <div class="video-container" id="videoContainer">
-        <iframe src="https://www.youtube.com/embed/nRA8-ygAPmY?si=kcPh0ckADwyOUiHk&amp;controls=0&autoplay=1"frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </iframe>
-    </div>
-    <script>
-        function showVideo() {
-            document.getElementById('videoContainer').style.display = 'block';
-        }
+  <img id="mainImage" src="IMG_3831.png" alt="Image 1" />
 
-        const confettiCount = 100;
-        const colors = ['#ffcccb', '#ffb6c1', '#ff69b4', '#ff1493', '#db7093', '#c71585'];
-        const confettiContainer = document.createDocumentFragment();
+  <script>
+    const image = document.getElementById('mainImage');
+    const img1 = "IMG_3831.png";
+    const img2 = "IMG_3832.png";
+    let showingFirst = true;
 
-        for (let i = 0; i < confettiCount; i++) {
-            const confetti = document.createElement('div');
-            confetti.classList.add('confetti');
-            confetti.style.left = `${Math.random() * 100}vw`;
-            confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
-            confetti.style.animationDelay = `${Math.random() * 5}s`;
-            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-            confettiContainer.appendChild(confetti);
-        }
+    document.body.addEventListener("click", () => {
+      showingFirst = !showingFirst;
+      image.src = showingFirst ? img1 : img2;
+    });
 
-        document.body.appendChild(confettiContainer);
-    </script>
+    // Also support tap events on mobile
+    document.body.addEventListener("touchstart", () => {
+      showingFirst = !showingFirst;
+      image.src = showingFirst ? img1 : img2;
+    });
+  </script>
 </body>
 </html>
