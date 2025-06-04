@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Lindsay</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Lindsay</title>
   <style>
     html, body {
       margin: 0;
@@ -15,6 +15,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      touch-action: manipulation;
     }
 
     img {
@@ -36,12 +37,6 @@
     let showingFirst = true;
 
     document.body.addEventListener("click", () => {
-      showingFirst = !showingFirst;
-      image.src = showingFirst ? img1 : img2;
-    });
-
-    // Also support tap events on mobile
-    document.body.addEventListener("touchstart", () => {
       showingFirst = !showingFirst;
       image.src = showingFirst ? img1 : img2;
     });
